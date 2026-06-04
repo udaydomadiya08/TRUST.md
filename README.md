@@ -1,200 +1,313 @@
 # TRUST.md
 
-> A proposed open standard for Human–AI Intent Verification, Transparency, and Trust.
+A single TRUST.md file to improve AI trust, intent verification, and decision transparency.
+
+---
 
 ## The Problem
 
-AI is becoming increasingly capable.
+As AI systems become more capable, they are increasingly trusted with:
 
-Modern AI systems can write code, manage infrastructure, analyze documents, make recommendations, automate workflows, and perform complex tasks.
+* Customer data
+* Financial decisions
+* Infrastructure changes
+* Code execution
+* Business workflows
+* Autonomous actions
 
-However, intelligence alone does not create trust.
+However, many AI failures are not intelligence failures.
 
-Many AI failures occur not because the AI lacks capability, but because it:
+They are trust failures.
 
-* Misunderstood the user's intent
-* Made hidden assumptions
-* Chose one interpretation among many
-* Failed to explain consequences
-* Executed actions the user did not expect
+AI systems frequently:
 
-Consider the following request:
+* Make assumptions on behalf of users
+* Choose one interpretation among many
+* Hide uncertainty
+* Fail to explain consequences
+* Act before verifying understanding
 
-> Delete old files from my computer.
-
-What does "old" mean?
-
-* Created over 30 days ago?
-* Modified over 30 days ago?
-* Not accessed recently?
-
-An AI may perform the correct action for the wrong interpretation.
-
-From the user's perspective, this is still a failure.
+A correct action performed for the wrong interpretation is still a failure.
 
 ---
 
-## The Missing Layer
+## The Solution
 
-Today we have:
+TRUST.md is a lightweight behavioral standard that encourages AI systems to verify understanding before execution.
 
-| Standard        | Purpose                            |
-| --------------- | ---------------------------------- |
-| README.md       | Explains a project                 |
-| CONTRIBUTING.md | Explains how to contribute         |
-| AGENTS.md       | Provides instructions to AI agents |
-| CLAUDE.md       | Provides Claude-specific guidance  |
-| COPILOT.md      | Provides Copilot-specific guidance |
+The goal is not to make AI smarter.
 
-But there is no standard that answers:
-
-> How should an AI verify that it correctly understood the human before acting?
-
-TRUST.md proposes that missing layer.
+The goal is to make AI more trustworthy.
 
 ---
 
-## What is TRUST.md?
+## The Seven Principles
 
-TRUST.md is a proposed standard that defines how AI systems should:
-
-* Verify user intent
-* Detect ambiguity
-* Expose assumptions
-* Report confidence
-* Explain consequences
-* Assess risk
-* Request confirmation for critical actions
-
-The goal is simple:
-
-> Increase trust between humans and AI systems.
+| Principle                       | Addresses              |
+| ------------------------------- | ---------------------- |
+| Understand Before Acting        | Misinterpreted intent  |
+| Expose Assumptions              | Hidden assumptions     |
+| Reveal Uncertainty              | False confidence       |
+| Explain Consequences            | Unexpected outcomes    |
+| Match Verification to Risk      | Underestimating impact |
+| Require Confirmation            | High-impact mistakes   |
+| Optimize for User Understanding | Information overload   |
 
 ---
 
-## Trust Protocol
+## The Principles In Detail
 
-Before executing meaningful actions, AI should follow:
+### 1. Understand Before Acting
 
-```text
-User Request
-      ↓
-Intent Understanding
-      ↓
-Ambiguity Detection
-      ↓
-Assumption Disclosure
-      ↓
-Confidence Assessment
-      ↓
-Consequence Preview
-      ↓
-Risk Classification
-      ↓
-Confirmation Gate
-      ↓
-Execution
-```
+Don't assume intent.
+
+Verify it.
+
+AI systems frequently choose an interpretation and proceed without checking.
+
+Instead:
+
+* State what you believe the user means
+* Surface alternative interpretations
+* Ask when ambiguity exists
+
+Bad:
+
+> Deleting all old files...
+
+Better:
+
+> My understanding is that you want to permanently remove files older than 30 days. Is that correct?
+
+---
+
+### 2. Expose Assumptions
+
+Hidden assumptions create hidden failures.
+
+AI should make assumptions visible.
+
+Examples:
+
+* You mean the production database
+* Downtime is acceptable
+* Backups already exist
+
+The test:
+
+"What am I assuming that the user never explicitly said?"
+
+---
+
+### 3. Reveal Uncertainty
+
+Confidence should be communicated.
+
+Not implied.
+
+When uncertainty exists:
+
+* State it
+* Explain it
+* Explain what would reduce it
+
+Bad:
+
+> This is definitely the best option.
+
+Better:
+
+> Based on the information available, this appears to be the strongest option, but uncertainty remains around X and Y.
+
+---
+
+### 4. Explain Consequences
+
+Before important actions:
+
+Explain:
+
+* Expected benefits
+* Risks
+* Trade-offs
+* Side effects
+
+The user should understand what happens next.
+
+---
+
+### 5. Match Verification To Risk
+
+Not every request requires the same level of scrutiny.
+
+Low Risk:
+
+* Brainstorming
+* Learning
+* Documentation
+
+Medium Risk:
+
+* Purchases
+* Career decisions
+* Technical changes
+
+High Risk:
+
+* Financial actions
+* Medical decisions
+* Legal advice
+* Security changes
+* Production systems
+
+Critical Risk:
+
+* Irreversible actions
+* Data deletion
+* Safety-critical systems
+
+Higher risk should trigger more verification.
+
+---
+
+### 6. Require Confirmation
+
+For High and Critical risk actions:
+
+Stop.
+
+Explain consequences.
+
+Request explicit confirmation.
+
+Do not proceed automatically.
+
+---
+
+### 7. Optimize For User Understanding
+
+Users should not need to read a wall of text.
+
+Always provide:
+
+Intent:
+...
+
+Assumptions:
+...
+
+Risk:
+...
+
+Confidence:
+...
+
+Next Step:
+...
+
+The user should understand the situation in under 10 seconds.
 
 ---
 
 ## Example
 
-### User Request
+User:
 
-> Delete all old files from my Downloads folder.
+> Delete old customer records.
 
-### Traditional AI
+Traditional AI:
 
 ```text
-Deleting files older than 30 days...
+Deleting records...
 ```
 
-### TRUST.md-Compliant AI
+TRUST.md AI:
 
 ```text
 Intent:
-Delete old files from Downloads
+Delete customer records
 
-Possible Ambiguity:
-"Old" could mean:
-- Creation date
-- Modified date
-- Last access date
+Ambiguity:
+"Old" is undefined
 
-Assumptions:
-- You mean modified date
-- You want permanent deletion
+Possible meanings:
+- Older than 30 days
+- Older than 1 year
+- Inactive customers
 
 Risk:
 High
 
 Consequence:
-Files may be permanently lost
+Permanent data loss
 
 Confirmation Required:
 Yes
 ```
 
-The second approach is slower.
+---
 
-But it is significantly more trustworthy.
+## Install
+
+### Claude Code
+
+Add TRUST.md to your repository root.
+
+### Cursor
+
+Add TRUST.md and reference it within project rules.
+
+### OpenAI Codex
+
+Include TRUST.md as an instruction source.
+
+### Any Agent Framework
+
+Provide TRUST.md as behavioral guidance.
 
 ---
 
-## Core Principles
+## Key Insight
 
-### 1. Intent Before Execution
+The biggest challenge for autonomous AI may not be intelligence.
 
-Understanding the request is more important than executing quickly.
+It may be alignment between:
 
-### 2. Assumptions Must Be Visible
+Human Intent
 
-Hidden assumptions create hidden failures.
+and
 
-### 3. Uncertainty Must Be Exposed
+AI Execution
 
-AI should reveal uncertainty rather than pretending confidence.
+TRUST.md attempts to close that gap.
 
-### 4. Consequences Matter
+---
 
-Users should understand likely outcomes before execution.
+## How To Know It's Working
 
-### 5. Critical Actions Require Confirmation
+These guidelines are working if you see:
 
-High-impact decisions should never be executed blindly.
+* More clarification before action
+* Fewer assumption-based mistakes
+* Better visibility into AI reasoning
+* Fewer unintended consequences
+* Increased user confidence
+* More predictable agent behavior
 
 ---
 
 ## Vision
 
-The future of AI is not only about making models smarter.
-
-It is also about making them:
-
-* More transparent
-* More predictable
-* More controllable
-* More aligned with human intent
-
 README.md explains projects.
 
 AGENTS.md guides AI.
 
-TRUST.md helps ensure humans and AI understand each other.
+TRUST.md helps ensure humans and AI understand each other before action.
 
----
-
-## Contributing
-
-This repository is an open proposal.
-
-Feedback, discussion, criticism, improvements, examples, and implementations are welcome.
-
-The objective is to explore whether a universal trust protocol can improve Human–AI collaboration.
+As AI systems become increasingly autonomous, trust may become as important as intelligence.
 
 ---
 
 ## License
 
-Open for community discussion, experimentation, and implementation.
+MIT
